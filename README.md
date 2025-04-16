@@ -1,3 +1,5 @@
+# ซอร์สโค้ดนี้ ใช้สำหรับเป็นตัวอย่างเท่านั้น ถ้านำไปใช้งานจริง ผู้ใช้ต้องจัดการเรื่องความปลอดภัย และ ประสิทธิภาพด้วยตัวเอง
+
 # LightAnywhere
 
 A real-time light control system with mobile app, backend server, and simulator components.
