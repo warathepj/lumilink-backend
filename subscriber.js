@@ -79,6 +79,6 @@ process.on('SIGINT', () => {
 
 console.log('MQTT subscriber running...');
 console.log('Connecting to mqtt://test.mosquitto.org');
-console.log('WebSocket server running on ws://localhost:8081');
+console.log('WebSocket server running on ws://localhost:8085');
 console.log('Listening on topic:', MQTT_TOPIC);
 

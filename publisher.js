@@ -1,12 +1,16 @@
 const WebSocket = require('ws');
 const mqtt = require('mqtt');
+require('dotenv').config();
 
 // WebSocket server setup
-const wss = new WebSocket.Server({ port: 8081 });
+const wss = new WebSocket.Server({ port: 8085 });
 
-// MQTT client setup
-const mqttClient = mqtt.connect('mqtt://test.mosquitto.org:1883');
-const MQTT_TOPIC = 'lightanywhere/toggle'; // Choose a unique topic to avoid conflicts
+// MQTT client setup with env variables
+const mqttClient = mqtt.connect(process.env.BROKER_URL, {
+  username: process.env.USER,
+  password: process.env.PASSWORD
+});
+const MQTT_TOPIC = 'lumilink/livingroom';
 
 // Handle MQTT connection
 mqttClient.on('connect', () => {
@@ -53,13 +57,21 @@ wss.on('connection', (ws) => {
   ws.on('message', (message) => {
     try {
       const data = JSON.parse(message);
-      console.log('Received WebSocket message:', data);
+      
+      // Enhanced logging for messages from app
+      console.log('\n=== Message from App ===');
+      console.log('Timestamp:', new Date().toISOString());
+      console.log('Type:', data.type);
+      console.log('Value:', data.value);
+      console.log('Room:', data.room);
+      console.log('Raw message:', JSON.stringify(data, null, 2));
+      console.log('========================\n');
 
-      // Handle the toggle state change
-      if (data.type === 'TOGGLE_SWITCH') {
+      if (data.type === 'TOGGLE_SWITCH' && data.room === 'Living Room') {
         // Publish to MQTT
         mqttClient.publish(MQTT_TOPIC, JSON.stringify({
           value: data.value,
+          room: data.room,
           timestamp: new Date().toISOString(),
           source: 'websocket'
         }));
@@ -70,6 +82,7 @@ wss.on('connection', (ws) => {
             client.send(JSON.stringify({
               type: 'TOGGLE_UPDATE',
               value: data.value,
+              room: data.room,
               timestamp: new Date().toISOString(),
               source: 'websocket'
             }));
@@ -103,7 +116,7 @@ process.on('SIGINT', () => {
   process.exit();
 });
 
-console.log('WebSocket server running on ws://localhost:8081');
+console.log('WebSocket server running on ws://localhost:8085');
 console.log('MQTT client connected to mqtt://test.mosquitto.org');
 
 
