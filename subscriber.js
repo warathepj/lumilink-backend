@@ -1,6 +1,27 @@
 const mqtt = require('mqtt');
 const WebSocket = require('ws');
+const mongoose = require('mongoose');
 require('dotenv').config();
+
+// MongoDB Connection
+mongoose.connect('mongodb://localhost:27017/LumiLink', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log('Connected to MongoDB - Database: LumiLink');
+}).catch((error) => {
+  console.error('MongoDB connection error:', error);
+});
+
+// Define MongoDB Schema and Model
+const toggleSchema = new mongoose.Schema({
+  value: Boolean,
+  room: String,
+  source: String,
+  timestamp: { type: Date, default: Date.now }
+});
+
+const Toggle = mongoose.model('Toggle', toggleSchema);
 
 // WebSocket server setup
 const wss = new WebSocket.Server({ port: 8085 }); // Using different port than publisher
@@ -36,7 +57,7 @@ mqttClient.on('connect', () => {
 });
 
 // Handle MQTT messages and forward to simulator
-mqttClient.on('message', (topic, message) => {
+mqttClient.on('message', async (topic, message) => {
   if (topic === MQTT_TOPIC) {
     try {
       const data = JSON.parse(message.toString());
@@ -49,6 +70,17 @@ mqttClient.on('message', (topic, message) => {
       console.log('Timestamp:', data.timestamp);
       console.log('Raw message:', JSON.stringify(data, null, 2));
       console.log('==========================\n');
+
+      // Save to MongoDB
+      const toggle = new Toggle({
+        value: data.value,
+        room: data.room,
+        source: data.source,
+        timestamp: data.timestamp
+      });
+
+      await toggle.save();
+      console.log('Toggle state saved to MongoDB');
 
       // Broadcast to all connected simulators
       wss.clients.forEach((client) => {
@@ -83,7 +115,9 @@ mqttClient.on('close', () => {
 });
 
 // Clean up on process termination
-process.on('SIGINT', () => {
+process.on('SIGINT', async () => {
+  await mongoose.connection.close();
+  console.log('MongoDB connection closed');
   mqttClient.end();
   wss.close();
   process.exit();
