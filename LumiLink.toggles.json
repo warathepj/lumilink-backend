@@ -1,0 +1,154 @@
+[{
+  "_id": {
+    "$oid": "6812cf214e474dc467a313b3"
+  },
+  "type": "TOGGLE_UPDATE",
+  "value": true,
+  "room": "Living Room",
+  "timestamp": "2025-05-01T01:32:17.029Z",
+  "source": "websocket",
+  "receivedAt": {
+    "$date": "2025-05-01T01:32:17.040Z"
+  },
+  "topic": "lumilink/toggle"
+},
+{
+  "_id": {
+    "$oid": "6812e73d36663984335028a2"
+  },
+  "type": "TOGGLE_UPDATE",
+  "value": false,
+  "room": "Living Room",
+  "timestamp": "2025-05-01T03:15:09.600Z",
+  "source": "websocket",
+  "receivedAt": {
+    "$date": "2025-05-01T03:15:09.609Z"
+  },
+  "topic": "lumilink/toggle"
+},
+{
+  "_id": {
+    "$oid": "6812e7e636663984335028a3"
+  },
+  "type": "TOGGLE_UPDATE",
+  "value": true,
+  "room": "Living Room",
+  "timestamp": "2025-05-01T03:17:58.536Z",
+  "source": "websocket",
+  "receivedAt": {
+    "$date": "2025-05-01T03:17:58.587Z"
+  },
+  "topic": "lumilink/toggle"
+},
+{
+  "_id": {
+    "$oid": "6812e7ee36663984335028a4"
+  },
+  "type": "TOGGLE_UPDATE",
+  "value": false,
+  "room": "Living Room",
+  "timestamp": "2025-05-01T03:18:06.379Z",
+  "source": "websocket",
+  "receivedAt": {
+    "$date": "2025-05-01T03:18:06.390Z"
+  },
+  "topic": "lumilink/toggle"
+},
+{
+  "_id": {
+    "$oid": "6812e7f236663984335028a5"
+  },
+  "type": "TOGGLE_UPDATE",
+  "value": true,
+  "room": "Living Room",
+  "timestamp": "2025-05-01T03:18:10.399Z",
+  "source": "websocket",
+  "receivedAt": {
+    "$date": "2025-05-01T03:18:10.415Z"
+  },
+  "topic": "lumilink/toggle"
+},
+{
+  "_id": {
+    "$oid": "6812e7f636663984335028a6"
+  },
+  "type": "TOGGLE_UPDATE",
+  "value": false,
+  "room": "Living Room",
+  "timestamp": "2025-05-01T03:18:14.184Z",
+  "source": "websocket",
+  "receivedAt": {
+    "$date": "2025-05-01T03:18:14.192Z"
+  },
+  "topic": "lumilink/toggle"
+},
+{
+  "_id": {
+    "$oid": "6812ea1c83e1af7e91cb23b7"
+  },
+  "type": "TOGGLE_UPDATE",
+  "value": true,
+  "room": "Living Room",
+  "timestamp": "2025-05-01T03:27:24.173Z",
+  "source": "websocket",
+  "receivedAt": {
+    "$date": "2025-05-01T03:27:24.184Z"
+  },
+  "topic": "lumilink/toggle"
+},
+{
+  "_id": {
+    "$oid": "6812ea2c83e1af7e91cb23b8"
+  },
+  "type": "TOGGLE_UPDATE",
+  "value": false,
+  "room": "Living Room",
+  "timestamp": "2025-05-01T03:27:40.064Z",
+  "source": "websocket",
+  "receivedAt": {
+    "$date": "2025-05-01T03:27:40.074Z"
+  },
+  "topic": "lumilink/toggle"
+},
+{
+  "_id": {
+    "$oid": "6812ea2d83e1af7e91cb23b9"
+  },
+  "type": "TOGGLE_UPDATE",
+  "value": true,
+  "room": "Living Room",
+  "timestamp": "2025-05-01T03:27:41.299Z",
+  "source": "websocket",
+  "receivedAt": {
+    "$date": "2025-05-01T03:27:41.311Z"
+  },
+  "topic": "lumilink/toggle"
+},
+{
+  "_id": {
+    "$oid": "6812ea3a83e1af7e91cb23ba"
+  },
+  "type": "TOGGLE_UPDATE",
+  "value": false,
+  "room": "Bedroom",
+  "timestamp": "2025-05-01T03:27:54.130Z",
+  "source": "websocket",
+  "receivedAt": {
+    "$date": "2025-05-01T03:27:54.139Z"
+  },
+  "topic": "lumilink/toggle"
+},
+{
+  "_id": {
+    "$oid": "6812ea3b83e1af7e91cb23bb"
+  },
+  "type": "TOGGLE_UPDATE",
+  "value": true,
+  "room": "Bedroom",
+  "timestamp": "2025-05-01T03:27:55.163Z",
+  "source": "websocket",
+  "receivedAt": {
+    "$date": "2025-05-01T03:27:55.173Z"
+  },
+  "topic": "lumilink/toggle"
+}]

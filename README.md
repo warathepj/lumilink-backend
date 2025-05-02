@@ -166,3 +166,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## ⚠️ Disclaimer
 
 This source code is for demonstration purposes only. Users must implement their own security and performance measures for production use.
+
+# Update 1May2025
+
+These updates reflect the MongoDB integration in the subscriber.js file, which stores toggle messages in a MongoDB database called "LumiLink" in the "toggles" collection. The changes include adding MongoDB to prerequisites, tech stack, features, connection details, configuration, and security considerations.

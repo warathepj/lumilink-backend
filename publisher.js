@@ -42,7 +42,7 @@ wss.on('connection', (ws, req) => {
       
       // Handle toggle messages from app
       if (data.type === 'TOGGLE_SWITCH') {
-        // Publish to MQTT broker
+        // Publish to MQTT broker only
         const mqttMessage = {
           type: 'TOGGLE_UPDATE',
           value: data.value,
@@ -51,13 +51,9 @@ wss.on('connection', (ws, req) => {
           source: 'websocket'
         };
         mqttClient.publish(MQTT_TOPIC, JSON.stringify(mqttMessage));
-
-        // Broadcast the toggle update to all connected clients
-        wss.clients.forEach((client) => {
-          if (client.readyState === WebSocket.OPEN) {
-            client.send(JSON.stringify(mqttMessage));
-          }
-        });
+        
+        // Don't broadcast via WebSocket as subscriber.js will handle that
+        // after receiving the MQTT message
       }
       
       // Enhanced logging for test messages
